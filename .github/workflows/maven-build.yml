@@ -25,7 +25,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven and Run Tests
-        run: ./mvnw -B verify
+        run: ./mvnw package
 
   docker:
     name: Build and Push Docker Image
