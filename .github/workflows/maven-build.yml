@@ -27,9 +27,6 @@ jobs:
       - name: Build with Maven and Run Tests
         run: ./mvnw package
 
-      - name: List Target Directory
-        run: ls
-
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -44,6 +41,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: target
 
       - name: List Target Directory
         run: ls
