@@ -30,10 +30,8 @@ spec:
     spec:
       containers:
         - name: workload
-          image: dsyer/petclinic
+          image: ahmedbenrouha01/petclinic:latest
           env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: postgres
             - name: SERVICE_BINDING_ROOT
               value: /bindings
             - name: SPRING_APPLICATION_JSON
@@ -41,6 +39,33 @@ spec:
                 {
                   "management.endpoint.health.probes.add-additional-paths": true
                 }
+            - name: SPRING_PROFILES_ACTIVE
+              value: postgres
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: username
+            - name: POSTGRES_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: password
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: port
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: database
           ports:
             - name: http
               containerPort: 8080
