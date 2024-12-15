@@ -34,13 +34,6 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: postgres
-            - name: SERVICE_BINDING_ROOT
-              value: /bindings
-            - name: SPRING_APPLICATION_JSON
-              value: |
-                {
-                  "management.endpoint.health.probes.add-additional-paths": true
-                }
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
@@ -49,8 +42,8 @@ spec:
             - name: POSTGRES_PASS
               valueFrom:
                 secretKeyRef:
-                  name: password
-                  key: username
+                  name: demo-db
+                  key: password
             - name: POSTGRES_URL
               value: "jdbc:postgresql://$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DB)"
             - name: POSTGRES_HOST
