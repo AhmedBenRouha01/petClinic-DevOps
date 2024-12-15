@@ -10,8 +10,8 @@ stringData:
   host: "demo-db"
   port: "5432"
   database: "petclinic"
-  username: "petclinic"
-  password: "petclinic"
+  username: "user"
+  password: "pass"
 
 ---
 apiVersion: v1

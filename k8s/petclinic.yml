@@ -41,6 +41,33 @@ spec:
                 {
                   "management.endpoint.health.probes.add-additional-paths": true
                 }
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: username
+            - name: POSTGRES_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: password
+                  key: username
+            - name: POSTGRES_URL
+              value: "jdbc:postgresql://$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DB)"
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: port
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: demo-db
+                  key: database
           ports:
             - name: http
               containerPort: 8080
