@@ -44,8 +44,6 @@ spec:
                 secretKeyRef:
                   name: demo-db
                   key: password
-            - name: POSTGRES_URL
-              value: "jdbc:postgresql://$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DB)"
             - name: POSTGRES_HOST
               valueFrom:
                 secretKeyRef:
