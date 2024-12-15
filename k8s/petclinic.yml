@@ -32,6 +32,13 @@ spec:
         - name: workload
           image: ahmedbenrouha01/petclinic:latest
           env:
+            - name: SERVICE_BINDING_ROOT
+              value: /bindings
+            - name: SPRING_APPLICATION_JSON
+              value: |
+                {
+                  "management.endpoint.health.probes.add-additional-paths": true
+                }
             - name: SPRING_PROFILES_ACTIVE
               value: postgres
             - name: POSTGRES_USER
