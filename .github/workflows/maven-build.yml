@@ -27,6 +27,12 @@ jobs:
       - name: Build with Maven and Run Tests
         run: ./mvnw package
 
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: target
+          path: target/
+
   docker:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
