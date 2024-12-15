@@ -11,7 +11,7 @@
 
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
-  <version>${revision}</version>
+  <version>3.4.0-SNAPSHOT</version>
 
   <name>petclinic</name>
 
