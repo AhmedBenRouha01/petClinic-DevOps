@@ -31,6 +31,7 @@ spec:
       containers:
         - name: workload
           image: ahmedbenrouha01/petclinic:latest
+          imagePullPolicy: Always
           env:
             - name: SERVICE_BINDING_ROOT
               value: /bindings
