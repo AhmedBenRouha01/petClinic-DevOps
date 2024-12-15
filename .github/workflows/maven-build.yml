@@ -47,7 +47,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ahmedbenrouha01/petclinic:latest -t ahmedbenrouha01/petclinic:${{ env.version }} .
+          docker build -t ahmedbenrouha01/petclinic:latest -t ahmedbenrouha01/petclinic:${{ env.version }} -f .devcontainer/Dockerfile .
 
       - name: Push Docker Image
         run: |
