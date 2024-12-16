@@ -1,0 +1,26 @@
+image:
+  repository: ahmedbenrouha01/petclinic
+  tag: latest
+  pullPolicy: Always
+
+replicaCount: 1
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 8080
+
+
+global:
+  postgresql:
+    auth:
+      postgresPassword: "petclinic"
+      username: "petclinic"
+      password: "petclinic"
+      database: "petclinic"
+    port: 5432
+
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
