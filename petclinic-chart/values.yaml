@@ -1,6 +1,6 @@
 image:
   repository: ahmedbenrouha01/petclinic
-  tag: latest
+  tag: 3.4.1-SNAPSHOT
   pullPolicy: Always
 
 replicaCount: 1
