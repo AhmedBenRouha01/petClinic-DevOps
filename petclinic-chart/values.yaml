@@ -28,12 +28,12 @@ global:
 
 prometheus:
   alertmanager:
-    enabled: false # Disable AlertManager if not required
+    enabled: false
   pushgateway:
-    enabled: false # Disable PushGateway if not required
+    enabled: false
   server:
     service:
-      type: ClusterIP # Expose Prometheus server as an internal service
+      type: ClusterIP
     resources:
       requests:
         memory: 256Mi
@@ -42,7 +42,6 @@ prometheus:
         memory: 512Mi
         cpu: 500m
 
-  # Add scrape configurations for custom metrics
   additionalScrapeConfigs:
     enabled: true
     config:
