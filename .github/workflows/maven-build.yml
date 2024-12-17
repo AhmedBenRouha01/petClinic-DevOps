@@ -65,11 +65,13 @@ jobs:
           docker build -t ahmedbenrouha01/petclinic:latest -t ahmedbenrouha01/petclinic:${{ env.version }} -f .devcontainer/Dockerfile .
 
       - name: Push Docker Image
+        if: github.ref == 'refs/heads/main'
         run: |
           docker push ahmedbenrouha01/petclinic:latest
           docker push ahmedbenrouha01/petclinic:${{ env.version }}
 
       - name: Update Helm Values
+        if: github.ref == 'refs/heads/main'
         run: |
           sed -i "s/tag:.*/tag: ${{ env.version }}/" petclinic-chart/values.yaml
           git config user.name "github-actions[bot]"
@@ -77,3 +79,5 @@ jobs:
           git add petclinic-chart/values.yaml
           git commit -m "Update image tag to ${{ env.version }}"
           git push
+
+      
