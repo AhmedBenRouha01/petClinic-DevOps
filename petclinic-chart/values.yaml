@@ -24,3 +24,34 @@ global:
     persistence:
       enabled: true
       size: 1Gi
+
+
+prometheus:
+  alertmanager:
+    enabled: false # Disable AlertManager if not required
+  pushgateway:
+    enabled: false # Disable PushGateway if not required
+  server:
+    service:
+      type: ClusterIP # Expose Prometheus server as an internal service
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 250m
+      limits:
+        memory: 512Mi
+        cpu: 500m
+
+  # Add scrape configurations for custom metrics
+  additionalScrapeConfigs:
+    enabled: true
+    config:
+      scrape_configs:
+        - job_name: 'petclinic'
+          metrics_path: /actuator/prometheus
+          static_configs:
+            - targets:
+                - petclinic.default.svc.cluster.local:8080
+
+
+
