@@ -3,7 +3,6 @@ image:
   tag: 3.4.7-SNAPSHOT
   pullPolicy: Always
 
-replicaCount: 2
 progressDeadline: 600
 historyLimit: 5
 
