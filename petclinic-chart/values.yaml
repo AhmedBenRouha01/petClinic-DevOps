@@ -3,13 +3,22 @@ image:
   tag: 3.4.5-SNAPSHOT
   pullPolicy: Always
 
-replicaCount: 1
+replicaCount: 2
+progressDeadline: 600
+historyLimit: 5
 
 service:
   type: NodePort
   port: 80
   targetPort: 8080
 
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  cpuTarget: 70
+  memoryTarget: 75
 
 global:
   postgresql:

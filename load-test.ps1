@@ -1,7 +1,7 @@
 # Configuration
-$webAppUrl = "http://127.0.0.1:60757/"  # Replace with your web app's URL
-$totalRequests = 10000            # Total number of requests to send
-$concurrentRequests = 10           # Number of concurrent requests
+$webAppUrl = "http://petclinic.local/owners?lastName="  # Replace with your web app's URL
+$totalRequests = 100000            # Total number of requests to send
+$concurrentRequests = 100           # Number of concurrent requests
 
 # Function to send a GET request
 function Send-GetRequest {
