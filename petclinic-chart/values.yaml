@@ -17,7 +17,7 @@ hpa:
   minReplicas: 2
   maxReplicas: 10
   cpuTarget: 70
-  memoryTarget: 40
+  memoryTarget: 75
 
 global:
   postgresql:
