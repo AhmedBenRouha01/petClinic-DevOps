@@ -32,6 +32,9 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+*.tgz
+
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

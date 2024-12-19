@@ -55,6 +55,3 @@ prometheus:
       metrics_path: /actuator/prometheus
       static_configs:
         - targets: ['petclinic.default.svc.cluster.local']
-
-
-
