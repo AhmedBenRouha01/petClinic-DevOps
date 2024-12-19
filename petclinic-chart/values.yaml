@@ -61,7 +61,7 @@ grafana:
       datasources:
         - name: Prometheus
           type: prometheus
-          url: http://petclinic-prometheus-server.default.svc.cluster.local:80
+          url: petclinic-prometheus-server.default.svc.cluster.local:80
           access: proxy
           isDefault: true
 
