@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: petclinic-postgresql-db
+  namespace: petclinic
   labels:
     app: petclinic-db
 spec:
@@ -13,9 +14,16 @@ spec:
       labels:
         app: petclinic-db
     spec:
+      volumes:
+        - name: postgresql-data
+          persistentVolumeClaim:
+            claimName: petclinic-postgresql-pvc
       containers:
         - image: postgres:17
           name: postgresql
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-data
           env:
             - name: POSTGRES_USER
               valueFrom:
@@ -25,12 +33,12 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: demo-db
+                  name: petclinic-secret
                   key: password
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: demo-db
+                  name: petclinic-secret
                   key: database
           ports:
             - containerPort: 5432

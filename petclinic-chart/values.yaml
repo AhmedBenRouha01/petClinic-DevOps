@@ -18,20 +18,12 @@ hpa:
   cpuTarget: 70
   memoryTarget: 75
 
-global:
-  postgresql:
-    auth:
-      postgresPassword: "petclinic"
-      username: "petclinic"
-      password: "petclinic"
-      database: "petclinic"
-    port: 5432
-
-  primary:
-    persistence:
-      enabled: true
-      size: 1Gi
-
+postgresql:
+  auth:
+    username: cGV0Y2xpbmlj
+    password: cGV0Y2xpbmlj
+    database: cGV0Y2xpbmlj
+  port: 5432
 
 prometheus:
   alertmanager:
@@ -54,4 +46,32 @@ prometheus:
       scrape_interval: 30s
       metrics_path: /actuator/prometheus
       static_configs:
-        - targets: ['petclinic.default.svc.cluster.local']
+        - targets: ['petclinic-svc.petclinic.svc.cluster.local']
+
+grafana:
+  enabled: true
+  adminUser: admin
+  adminPassword: admin123
+  service:
+    type: NodePort
+    nodePort: 32000
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://petclinic-prometheus-server.default.svc.cluster.local:80
+          access: proxy
+          isDefault: true
+
+
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    hosts:
+      - grafana.local
+    pathType: Prefix
+    paths:
+      - /

@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic
+  name: petclinic-app
+  namespace: petclinic
   labels:
-    app: petclinic
+    app: petclinic-app
 spec:
   progressDeadlineSeconds: {{ .Values.progressDeadline }}
   revisionHistoryLimit: {{ .Values.historyLimit }}
@@ -14,11 +15,11 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-      app: petclinic
+      app: petclinic-app
   template:
     metadata:
       labels:
-        app: petclinic
+        app: petclinic-app
     spec:
       containers:
         - name: workload
@@ -40,20 +41,26 @@ spec:
                   "management.endpoint.health.probes.add-additional-paths": true
                 }
             - name: POSTGRES_USER
-              value: {{ .Values.global.postgresql.auth.username }}
+              valueFrom:
+                secretKeyRef:
+                  name: petclinic-secret
+                  key: username
             - name: POSTGRES_PASS
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-postgresql
+                  name: petclinic-secret
                   key: password
             - name: POSTGRES_DB
-              value: {{ .Values.global.postgresql.auth.database }}
+              valueFrom:
+                secretKeyRef:
+                  name: petclinic-secret
+                  key: database
             - name: SPRING_PROFILES_ACTIVE
               value: postgres
             - name: POSTGRES_PORT
-              value: "{{ .Values.global.postgresql.port }}"
+              value: "{{ .Values.postgresql.port }}"
             - name: POSTGRES_HOST
-              value: petclinic-postgresql.default.svc.cluster.local
+              value: petclinic-postgresql-svc.petclinic.svc.cluster.local
           ports:
             - name: http
               containerPort: 8080
