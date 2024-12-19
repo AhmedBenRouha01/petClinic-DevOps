@@ -12,6 +12,9 @@ spec:
     name: petclinic
   minReplicas: {{ .Values.hpa.minReplicas }}
   maxReplicas: {{ .Values.hpa.maxReplicas }}
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 30
   metrics:
     - type: Resource
       resource:
