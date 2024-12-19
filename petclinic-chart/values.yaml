@@ -7,7 +7,6 @@ progressDeadline: 600
 historyLimit: 5
 
 service:
-  type: NodePort
   port: 80
   targetPort: 8080
 
