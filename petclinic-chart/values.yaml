@@ -1,6 +1,6 @@
 image:
   repository: ahmedbenrouha01/petclinic
-  tag: 3.4.17-SNAPSHOT
+  tag: 3.4.18-SNAPSHOT
   pullPolicy: Always
 
 progressDeadline: 600
