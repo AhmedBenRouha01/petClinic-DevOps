@@ -1,4 +1,4 @@
-FROM openjdk:17.0.8-slim
+FROM openjdk:17-jdk-slim
 
 LABEL maintainer="Ahmed Ben Rouha ahmedbenrouha.email@gmail.com" \
       description="Docker image for Spring Petclinic application. This is a fork from the spring app petclinic for demo purposes"
