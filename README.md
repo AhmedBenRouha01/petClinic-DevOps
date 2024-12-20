@@ -86,7 +86,7 @@ minikube start --driver=docker --cpus=4 --memory=4096 --cni=calico
    127.0.0.1 petclinic.local
    127.0.0.1 grafana.local
    ```
-Now you can use the Petclinic app http://petclinic.local/
+Now you can use the Petclinic app at petclinic.local
    
    
 ## How to use the app
@@ -115,9 +115,6 @@ App
 - templates/service.yaml: configures a ClusterIP type service for the Petclinc app
 
 ## Horizontal Pod Autoscaler test
-You can test that the number of pods can be automatically adjusted based on the CPU and Memory load by load tesing the app, here is a simple way to do it:
-```bash
-kubectl run -i --tty load-generator --image=busybox --restart=Never -- /bin/sh -c "while true; do wget -q -O- http://petclinic-svc.petclinic.svc.cluster.local/owners?page=3; done"
-```
+You can test that the number of pods can be automatically adjusted based on the CPU and Memory load by load tesing the app
 ![img.png](img.png)
 ![img_1.png](img_1.png)
