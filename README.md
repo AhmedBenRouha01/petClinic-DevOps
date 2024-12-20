@@ -116,5 +116,8 @@ App
 
 ## Horizontal Pod Autoscaler test
 You can test that the number of pods can be automatically adjusted based on the CPU and Memory load by load tesing the app
+
+Note: you can switch to branch postgresql-community-chart where you can find the same project but using the Bitnami Postgresql community chart
+
 ![img.png](img.png)
 ![img_1.png](img_1.png)
