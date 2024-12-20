@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-only-web
-  namespace: petclinic
+  name: allow-only-petclinic-app
+  namespace: {{ .Values.namespace }}
 spec:
   podSelector:
     matchLabels:

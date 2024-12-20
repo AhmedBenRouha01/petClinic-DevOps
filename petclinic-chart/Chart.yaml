@@ -1,14 +1,29 @@
 apiVersion: v2
 name: petclinic-chart
-description: A Helm chart for Kubernetes
+description: "A Helm chart for deploying the Spring Petclinic application with Prometheus and Grafana monitoring."
 type: application
 version: 0.1.0
 appVersion: "1.16.0"
+
+keywords:
+  - kubernetes
+  - petclinic
+  - spring
+  - prometheus
+  - grafana
+
+maintainers:
+  - name: Ahmed Ben Rouha
+    email: ahmedbenrouha.email@gmail.com
+    url: https://github.com/AhmedBenRouha01
+
+sources:
+  - https://github.com/AhmedBenRouha01/petClinic-DevOps
 
 dependencies:
   - name: prometheus
     version: 26.0.0
     repository: https://prometheus-community.github.io/helm-charts
   - name: grafana
-    version: 6.56.0 # Replace with the latest version if necessary
+    version: 6.56.0
     repository: https://grafana.github.io/helm-charts

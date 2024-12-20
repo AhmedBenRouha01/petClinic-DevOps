@@ -3,8 +3,9 @@ image:
   tag: 3.4.17-SNAPSHOT
   pullPolicy: Always
 
+namespace: petclinic
+
 progressDeadline: 600
-historyLimit: 5
 
 service:
   port: 80
@@ -20,9 +21,9 @@ hpa:
 
 postgresql:
   auth:
-    username: cGV0Y2xpbmlj
-    password: cGV0Y2xpbmlj
-    database: cGV0Y2xpbmlj
+    username: petclinic
+    password: petclinic
+    database: petclinic
   port: 5432
 
 prometheus:

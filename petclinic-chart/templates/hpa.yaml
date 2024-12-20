@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Release.Name }}-hpa
-  namespace: petclinic
+  namespace: {{ .Values.namespace }}
   labels:
     app: petclinic-app
 spec:
