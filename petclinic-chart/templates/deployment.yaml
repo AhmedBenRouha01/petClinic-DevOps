@@ -60,7 +60,7 @@ spec:
             - name: POSTGRES_PORT
               value: "{{ .Values.postgresql.port }}"
             - name: POSTGRES_HOST
-              value: petclinic-postgresql-svc.petclinic.svc.cluster.local
+              value: petclinic-postgresql-svc2.petclinic.svc.cluster.local
           ports:
             - name: http
               containerPort: 8080
