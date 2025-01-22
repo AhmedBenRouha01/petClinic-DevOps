@@ -1,6 +1,6 @@
 image:
   repository: ahmedbenrouha01/petclinic
-  tag: 3.4.24-SNAPSHOT
+  tag: 3.4.25-SNAPSHOT
   pullPolicy: Always
 
 namespace: petclinic
